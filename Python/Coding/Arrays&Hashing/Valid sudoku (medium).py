@@ -85,6 +85,49 @@ board4=[[".",".",".",".","5",".",".","1","."],
 s=Solution()
 s.isValidSudoku(board)     
 
+#%%
+import collections
 
+class Solution2:
+    def isValidSudoku2(self,board):
+        cols =collections.defaultdict(set)
+        rows = collections.defaultdict(set)
+        squares = collections.defaultdict(set)
 
+        for r in range(9):
+            for c in range(9):
+                if board[r][c] == ".":
+                    continue
+                if (board[r][c] in rows[r]
+                    or board[r][c] in cols[c]
+                    or board[r][c] in squares[(r // 3, c // 3)]):
+                    return False
+                cols[c].add(board[r][c])
+                rows[r].add(board[r][c])
+                squares[(r // 3, c // 3)].add(board[r][c])
 
+        return True
+
+s=Solution2()
+s.isValidSudoku2(board)  
+#%%d={}
+d['Apple']=50
+d['Orange']=20
+print(d['Apple'])
+print(d['Grapes'])# This gives Key Error
+We can avoid this KeyError by using defaulting in normal dict as well, let see how we can do it
+
+d={}
+d['Apple']=50
+d['Orange']=20
+print(d['Apple'])
+print(d.get('Apple'))
+print(d.get('Grapes',0)) # DEFAULTING
+Using default dict
+
+from collections import defaultdict
+d = defaultdict(int) ## inside parenthesis we say what should be the default value.
+d['Apple']=50
+d['Orange']=20
+print(d['Apple'])
+print(d['Grapes']) ##→ This gives Will not give error
