@@ -1,0 +1,12 @@
+{
+	"name": "AthletesHTTP",
+	"properties": {
+		"annotations": [],
+		"type": "HttpServer",
+		"typeProperties": {
+			"url": "https://raw.githubusercontent.com/MateuszOrt/My-repository/MateuszOrt-patch-1/Azure/Athletes.csv",
+			"enableServerCertificateValidation": true,
+			"authenticationType": "Anonymous"
+		}
+	}
+}
